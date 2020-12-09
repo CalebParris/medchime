@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { globalStyles } from '../styles/global';
 
 export default function Appointments(){
@@ -10,8 +10,3 @@ export default function Appointments(){
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        padding: 24
-    }
-})
