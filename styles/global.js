@@ -1,4 +1,5 @@
 import  { StyleSheet } from "react-native";
+import { color } from "react-native-reanimated";
 
 export const globalStyles = StyleSheet.create({
     container: {
@@ -13,5 +14,14 @@ export const globalStyles = StyleSheet.create({
     paragraph: {
         marginVertical: 8,
         lineHeight: 20,
+    },
+    header: {
+        backgroundColor: 'blue',
+        padding: 40,
+    },
+    headerText: {
+        color: 'white',
+        textAlign: 'center',
+        fontSize: 30
     }
     })
