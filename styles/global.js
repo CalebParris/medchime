@@ -10,9 +10,11 @@ export const globalStyles = StyleSheet.create({
     fontSize: 18,
     color: "black",
   },
-  paragraph: {
-    marginVertical: 8,
-    lineHeight: 20,
+  formHeader: {
+    textAlign: "center",
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 20,
   },
   header: {
     backgroundColor: "blue",
@@ -35,14 +37,14 @@ export const globalStyles = StyleSheet.create({
   list: {
     flex: 1,
   },
-  inut: {
-    marginBottom: 10,
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ddd",
+  input: {
+    borderWidth: 1,
+    borderColor: "black",
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 6,
   },
-  modal: {
+  modalContent: {
     flex: 1,
   },
   modalOpen: {
@@ -52,5 +54,23 @@ export const globalStyles = StyleSheet.create({
   modalClose: {
     color: "red",
     alignSelf: "flex-end",
+  },
+  errMessage: {
+    color: "red",
+    fontWeight: "bold",
+  },
+  button: {
+    marginTop: 20,
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 6,
+    backgroundColor: "blue",
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    fontSize: 25,
+    textAlign: "center",
   },
 });
