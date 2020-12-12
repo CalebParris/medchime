@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-// import MedCard from "../components/medCard";
+import MedCard from "../components/medCard";
 import MedForm from "../components/medForm.js";
 
 export default function MedList() {
@@ -36,7 +36,7 @@ export default function MedList() {
 
   return (
     <View style={globalStyles.container}>
-      <Text style={globalStyles.titleText}>Medication List Screen</Text>
+      <Text style={globalStyles.titleText}>Medication List</Text>
 
       <Modal visible={modalOpen} animationType="slide">
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -52,17 +52,7 @@ export default function MedList() {
         </TouchableWithoutFeedback>
       </Modal>
 
-      <View style={globalStyles.list}>
-        <FlatList
-          keyExtractor={(item) => item.id.toString()}
-          data={meds}
-          renderItem={({ item }) => (
-            <Text style={globalStyles.med}>
-              {item.name} | {item.dosage} | {item.note}
-            </Text>
-          )}
-        />
-      </View>
+      <MedCard meds={meds} />
 
       <MaterialCommunityIcons
         name="plus-circle"

@@ -9,6 +9,7 @@ export const globalStyles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     color: "black",
+    textAlign: "center",
   },
   formHeader: {
     textAlign: "center",
@@ -17,21 +18,22 @@ export const globalStyles = StyleSheet.create({
     marginBottom: 20,
   },
   header: {
-    backgroundColor: "blue",
-    padding: 40,
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "blue",
   },
   headerText: {
-    color: "white",
+    color: "blue",
     textAlign: "center",
     fontSize: 30,
+    fontWeight: "bold",
   },
-  med: {
+  card: {
     padding: 16,
     marginTop: 16,
-    borderColor: "#bbb",
+    borderColor: "blue",
     borderWidth: 1,
-    borderStyle: "dashed",
-    borderRadius: 1,
+    borderStyle: "solid",
     borderRadius: 10,
   },
   list: {
@@ -72,5 +74,22 @@ export const globalStyles = StyleSheet.create({
     textTransform: "uppercase",
     fontSize: 25,
     textAlign: "center",
+  },
+  cardHeader: {
+    backgroundColor: "blue",
+    borderRadius: 4,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+  cardHeaderText: {
+    textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  cardText: {
+    marginVertical: 10,
   },
 });
