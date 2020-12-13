@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Text,
   View,
-  FlatList,
   Modal,
   TouchableWithoutFeedback,
   Keyboard,
@@ -10,7 +9,7 @@ import {
 import { globalStyles } from "../styles/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MedCard from "../components/medCard";
-import MedForm from "../components/medForm.js";
+import MedForm from "../components/medForm";
 
 export default function MedList() {
   const [meds, setMeds] = useState([

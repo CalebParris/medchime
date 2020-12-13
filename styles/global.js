@@ -92,4 +92,22 @@ export const globalStyles = StyleSheet.create({
   cardText: {
     marginVertical: 10,
   },
+  dateTimeInput: {
+    borderWidth: 1,
+    borderColor: "black",
+    padding: 10,
+    borderRadius: 6,
+    marginBottom: 20,
+  },
+  dateTimeIcon: {
+    color: "blue",
+  },
+  dateTimeBlock: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
+  editIcon: {
+    color: "lightgrey",
+  },
 });
