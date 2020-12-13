@@ -8,7 +8,6 @@ import Btn from "../components/btn";
 const medSchema = yup.object({
   name: yup.string().required(),
   dosage: yup.string().required(),
-  note: yup.string(),
 });
 
 export default function MedForm({ addMed }) {

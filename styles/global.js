@@ -82,6 +82,9 @@ export const globalStyles = StyleSheet.create({
     top: 0,
     left: 0,
     right: 0,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
   },
   cardHeaderText: {
     textAlign: "center",
