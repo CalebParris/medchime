@@ -13,15 +13,19 @@ import MedForm from "../components/medForm";
 
 export default function MedList() {
   const [meds, setMeds] = useState([
-    { name: "med 1", dosage: "2 Tablets", note: "Take with water", id: 1 },
-    { name: "med 2", dosage: "4 ml", note: "Take with food", id: 2 },
+    { name: "med 1", instructions: "1 tablet twice a day", id: 1 },
+    { name: "med 2", instructions: "4ml once every 6 hours", id: 2 },
     {
       name: "med 3",
-      dosage: "1 capsule",
-      note: "Do not mix with alcohol",
+      instructions: "2 capsules three times daily",
       id: 3,
     },
-    { name: "med 4", dosage: "1 ml", note: "Keep refridgerated", id: 4 },
+    {
+      name: "med 4",
+      instructions:
+        "1 tablet disolved in 10 ml water, then take 5ml of solution",
+      id: 4,
+    },
   ]);
   const [modalOpen, setModalOpen] = useState(false);
 

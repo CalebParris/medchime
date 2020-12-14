@@ -46,6 +46,14 @@ export const globalStyles = StyleSheet.create({
     fontSize: 18,
     borderRadius: 6,
   },
+  instructions: {
+    borderWidth: 1,
+    borderColor: "black",
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 6,
+    minHeight: 150,
+  },
   modalContent: {
     flex: 1,
   },
@@ -62,7 +70,7 @@ export const globalStyles = StyleSheet.create({
     fontWeight: "bold",
   },
   button: {
-    marginTop: 20,
+    marginTop: 5,
     padding: 10,
     fontSize: 18,
     borderRadius: 6,

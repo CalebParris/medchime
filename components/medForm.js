@@ -7,7 +7,7 @@ import Btn from "../components/btn";
 
 const medSchema = yup.object({
   name: yup.string().required(),
-  dosage: yup.string().required(),
+  instructions: yup.string().required(),
 });
 
 export default function MedForm({ addMed }) {
@@ -16,8 +16,7 @@ export default function MedForm({ addMed }) {
       <Formik
         initialValues={{
           name: "",
-          dosage: "",
-          note: "",
+          instructions: "",
         }}
         validationSchema={medSchema}
         onSubmit={(values, actions) => {
@@ -43,22 +42,15 @@ export default function MedForm({ addMed }) {
               </Text>
 
               <TextInput
-                style={globalStyles.input}
-                placeholder="Medication Dosage"
-                onChangeText={props.handleChange("dosage")}
-                value={props.values.dosage}
+                multiline
+                style={globalStyles.instructions}
+                placeholder="Medication Instructions"
+                onChangeText={props.handleChange("instructions")}
+                value={props.values.instructions}
               />
               <Text style={globalStyles.errMessage}>
-                {props.touched.dosage && props.errors.dosage}
+                {props.touched.instructions && props.errors.instructions}
               </Text>
-
-              <TextInput
-                multiline
-                style={globalStyles.input}
-                placeholder="Extra Notes"
-                onChangeText={props.handleChange("note")}
-                value={props.values.note}
-              />
 
               <Btn text="Sumbit" onPress={props.handleSubmit} />
             </View>

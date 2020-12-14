@@ -30,8 +30,9 @@ export default function MedCard({ meds }) {
                 />
               </TouchableOpacity>
             </View>
-            <Text style={globalStyles.cardText}>Dosage: {item.dosage}</Text>
-            <Text style={globalStyles.cardText}>Notes: {item.note}</Text>
+            <Text style={globalStyles.cardText}>
+              Instructions: {item.instructions}
+            </Text>
           </View>
         )}
       />
