@@ -18,7 +18,6 @@ export default function Appointments() {
       time: "3:00 PM",
       doctor: "Dr. King",
       location: "123 Address blvd Houston, TX",
-      note: "Arrive 10 minutes early",
       id: 1,
     },
     {
@@ -26,7 +25,6 @@ export default function Appointments() {
       time: "8:00 AM",
       doctor: "Dr. Who",
       location: "123 Address blvd Houston, TX",
-      note: "No food for 12 hours before",
       id: 2,
     },
     {
@@ -34,7 +32,6 @@ export default function Appointments() {
       time: "10:00 AM",
       doctor: "Dr. Zhivago",
       location: "123 Address blvd Houston, TX",
-      note: "Tell doctor about leg spasm",
       id: 3,
     },
     {
@@ -42,7 +39,6 @@ export default function Appointments() {
       time: "1:00 PM",
       doctor: "Dr. Strangelove",
       location: "123 Address blvd Houston, TX",
-      note: "Grab a lollipop",
       id: 4,
     },
   ]);
