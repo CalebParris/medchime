@@ -101,7 +101,7 @@ export const globalStyles = StyleSheet.create({
     fontSize: 20,
   },
   cardText: {
-    marginVertical: 10,
+    marginVertical: 20,
   },
   dateTimeInput: {
     borderWidth: 1,

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -11,20 +11,14 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import AppointCard from "../components/appointCard";
 import AppointForm from "../components/appointForm";
 import axios from "axios";
+import Constants from "expo-constants";
 
 export default function Appointments() {
-  const [appointments, setAppointments] = useState({
-    date: "",
-    time: "",
-    doctor: "",
-    location: "",
-    id: "",
-    deviceId: "",
-  });
+  const [appointments, setAppointments] = useState();
   const [modalOpen, setModalOpen] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const addAppointment = (appointment) => {
-    appointment.id = Math.random().toString();
     axios
       .post(`https://medchime-server.herokuapp.com/api/appointments`, {
         date: appointment.date,
@@ -33,10 +27,32 @@ export default function Appointments() {
         location: appointment.location,
         deviceId: appointment.deviceId,
       })
-      .then((response) => console.log(response))
+      .then((response) => console.log("Successfully Created Appointment"))
       .catch((err) => console.log(err));
     setModalOpen(false);
+    setIsUpdated(true);
   };
+
+  useEffect(() => {
+    axios
+      .get("https://medchime-server.herokuapp.com/api/appointments", {
+        params: {
+          deviceId: Constants.deviceId,
+        },
+      })
+      .then((response) => {
+        if (response.data.length === 0) {
+          console.log("No Data found");
+        } else {
+          console.log("Data Found");
+          console.log(response.data);
+          setAppointments(response.data);
+        }
+      })
+      .then(() => console.log(appointments))
+      .catch((err) => console.log(err));
+    setIsUpdated(false);
+  }, [isUpdated]);
 
   return (
     <View style={globalStyles.container}>
