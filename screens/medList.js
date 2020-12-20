@@ -11,28 +11,46 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MedCard from "../components/medCard";
 import MedForm from "../components/medForm";
 import axios from "axios";
+import Constants from "expo-constants";
 
 export default function MedList() {
-  const [meds, setMeds] = useState({
-    name: "",
-    instructions: "",
-    id: "",
-    deviceId: "",
-  });
+  const [meds, setMeds] = useState();
   const [modalOpen, setModalOpen] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const addMed = (med) => {
-    med.id = Math.random().toString();
     axios
-      .post(`https://medchime-server.herokuapp.com/api/medications`, {
+      .post("https://medchime-server.herokuapp.com/api/medications", {
         name: med.name,
         instructions: med.instructions,
         deviceId: med.deviceId,
       })
-      .then((response) => console.log(response))
+      .then((response) => console.log("Successfully Created Medication"))
       .catch((err) => console.log(err));
     setModalOpen(false);
+    setIsUpdated(true);
   };
+
+  useEffect(() => {
+    axios
+      .get("https://medchime-server.herokuapp.com/api/medications", {
+        params: {
+          deviceId: Constants.deviceId,
+        },
+      })
+      .then((response) => {
+        if (response.data.length === 0) {
+          console.log("No Data found");
+        } else {
+          console.log("Data Found");
+          console.log(response.data);
+          setMeds(response.data);
+        }
+      })
+      .then(() => console.log(meds))
+      .catch((err) => console.log(err));
+    setIsUpdated(false);
+  }, [isUpdated]);
 
   return (
     <View style={globalStyles.container}>

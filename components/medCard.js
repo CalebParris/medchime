@@ -12,38 +12,43 @@ export default function MedCard({ meds }) {
       { cancelable: false }
     );
   };
+
   return (
     <View style={globalStyles.list}>
-      <FlatList
-        keyExtractor={(item) => item.id.toString()}
-        data={meds}
-        renderItem={({ item }) => (
-          <View style={globalStyles.card}>
-            <View style={globalStyles.cardHeader}>
-              <TouchableOpacity>
-                <MaterialCommunityIcons
-                  name="pencil-outline"
-                  size={24}
-                  onPress={() => workInProgress()}
-                  style={globalStyles.editIcon}
-                />
-              </TouchableOpacity>
-              <Text style={globalStyles.cardHeaderText}>{item.name}</Text>
-              <TouchableOpacity>
-                <MaterialCommunityIcons
-                  name="close"
-                  size={24}
-                  onPress={() => console.log("deleted")}
-                  style={globalStyles.modalClose}
-                />
-              </TouchableOpacity>
+      {meds === undefined ? (
+        <Text>No Medication Data Found</Text>
+      ) : (
+        <FlatList
+          keyExtractor={(item, index) => index.toString()}
+          data={meds}
+          renderItem={({ item }) => (
+            <View style={globalStyles.card}>
+              <View style={globalStyles.cardHeader}>
+                <TouchableOpacity>
+                  <MaterialCommunityIcons
+                    name="pencil-outline"
+                    size={24}
+                    onPress={() => workInProgress()}
+                    style={globalStyles.editIcon}
+                  />
+                </TouchableOpacity>
+                <Text style={globalStyles.cardHeaderText}>{item.name}</Text>
+                <TouchableOpacity>
+                  <MaterialCommunityIcons
+                    name="close"
+                    size={24}
+                    onPress={() => console.log("deleted")}
+                    style={globalStyles.modalClose}
+                  />
+                </TouchableOpacity>
+              </View>
+              <Text style={globalStyles.cardText}>
+                Instructions: {item.instructions}
+              </Text>
             </View>
-            <Text style={globalStyles.cardText}>
-              Instructions: {item.instructions}
-            </Text>
-          </View>
-        )}
-      />
+          )}
+        />
+      )}
     </View>
   );
 }
