@@ -4,6 +4,7 @@ import { globalStyles } from "../styles/global";
 import { Formik } from "formik";
 import * as yup from "yup";
 import Btn from "../components/btn";
+import Constants from "expo-constants";
 
 const medSchema = yup.object({
   name: yup.string().required(),
@@ -17,6 +18,7 @@ export default function MedForm({ addMed }) {
         initialValues={{
           name: "",
           instructions: "",
+          deviceId: Constants.deviceId,
         }}
         validationSchema={medSchema}
         onSubmit={(values, actions) => {

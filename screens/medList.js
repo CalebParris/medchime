@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -10,30 +10,28 @@ import { globalStyles } from "../styles/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MedCard from "../components/medCard";
 import MedForm from "../components/medForm";
+import Constants from "expo-constants";
+import axios from "axios";
 
 export default function MedList() {
-  const [meds, setMeds] = useState([
-    { name: "med 1", instructions: "1 tablet twice a day", id: 1 },
-    { name: "med 2", instructions: "4ml once every 6 hours", id: 2 },
-    {
-      name: "med 3",
-      instructions: "2 capsules three times daily",
-      id: 3,
-    },
-    {
-      name: "med 4",
-      instructions:
-        "1 tablet disolved in 10 ml water, then take 5ml of solution",
-      id: 4,
-    },
-  ]);
+  const [meds, setMeds] = useState({
+    name: "",
+    instructions: "",
+    id: "",
+    deviceId: "",
+  });
   const [modalOpen, setModalOpen] = useState(false);
 
   const addMed = (med) => {
     med.id = Math.random().toString();
-    setMeds((currentMeds) => {
-      return [med, ...currentMeds];
-    });
+    axios
+      .post(`https://medchime-server.herokuapp.com/api/medications`, {
+        name: med.name,
+        instructions: med.instructions,
+        deviceId: med.deviceId,
+      })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
     setModalOpen(false);
   };
 
