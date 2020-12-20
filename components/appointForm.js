@@ -7,6 +7,7 @@ import Btn from "../components/btn";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Moment from "moment";
+import Constants from "expo-constants";
 
 const appointSchema = yup.object({
   doctor: yup.string().required(),
@@ -22,6 +23,7 @@ export default function AppointForm({ addAppointment }) {
           time: Moment().format("hh:mm A"),
           doctor: "",
           location: "",
+          deviceId: Constants.deviceId,
         }}
         validationSchema={appointSchema}
         onSubmit={(values, actions) => {

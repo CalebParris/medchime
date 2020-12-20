@@ -10,7 +10,6 @@ import { globalStyles } from "../styles/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import MedCard from "../components/medCard";
 import MedForm from "../components/medForm";
-import Constants from "expo-constants";
 import axios from "axios";
 
 export default function MedList() {
