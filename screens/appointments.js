@@ -35,18 +35,15 @@ export default function Appointments() {
 
   useEffect(() => {
     axios
-      .get("https://medchime-server.herokuapp.com/api/appointments", {
-        params: {
-          deviceId: Constants.deviceId,
-        },
-      })
+      .get("https://medchime-server.herokuapp.com/api/appointments")
       .then((response) => {
         if (response.data.length === 0) {
           console.log("No Data found");
         } else {
           console.log("Data Found");
-          console.log(response.data);
-          setAppointments(response.data);
+          setAppointments(
+            response.data.filter((item) => item.deviceId === Constants.deviceId)
+          );
         }
       })
       .then(() => console.log(appointments))

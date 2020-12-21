@@ -33,18 +33,15 @@ export default function MedList() {
 
   useEffect(() => {
     axios
-      .get("https://medchime-server.herokuapp.com/api/medications", {
-        params: {
-          deviceId: Constants.deviceId,
-        },
-      })
+      .get("https://medchime-server.herokuapp.com/api/medications")
       .then((response) => {
         if (response.data.length === 0) {
           console.log("No Data found");
         } else {
           console.log("Data Found");
-          console.log(response.data);
-          setMeds(response.data);
+          setMeds(
+            response.data.filter((item) => item.deviceId === Constants.deviceId)
+          );
         }
       })
       .then(() => console.log(meds))
