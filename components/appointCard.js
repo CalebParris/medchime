@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, FlatList, TouchableOpacity, Alert } from "react-native";
 import { globalStyles } from "../styles/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import axios from "axios";
 
 export default function AppointCard({ appointments }) {
   const workInProgress = () => {
@@ -12,6 +13,14 @@ export default function AppointCard({ appointments }) {
       { cancelable: false }
     );
   };
+
+  const handleDelete = (id) => {
+    axios
+      .delete(`https://medchime-server.herokuapp.com/api/appointments/${id}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <View style={globalStyles.list}>
       {appointments === undefined ? (
@@ -36,7 +45,7 @@ export default function AppointCard({ appointments }) {
                   <MaterialCommunityIcons
                     name="close"
                     size={24}
-                    onPress={() => console.log("deleted")}
+                    onPress={() => handleDelete(item._id)}
                     style={globalStyles.modalClose}
                   />
                 </TouchableOpacity>
