@@ -7,7 +7,10 @@ export default function MedCard({ meds, handleDelete }) {
   return (
     <View style={globalStyles.list}>
       {meds.length === 0 ? (
-        <Text>No Medication Data Found</Text>
+        <Text style={globalStyles.noData}>
+          No Medication Data Found. Press the '+' button to add a new
+          medication.
+        </Text>
       ) : (
         <FlatList
           keyExtractor={(item, index) => index.toString()}

@@ -121,4 +121,10 @@ export const globalStyles = StyleSheet.create({
   emptyBox: {
     backgroundColor: "blue",
   },
+  noData: {
+    marginVertical: 100,
+    textAlign: "center",
+    fontSize: 20,
+    color: "grey",
+  },
 });

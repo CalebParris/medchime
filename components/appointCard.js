@@ -7,7 +7,10 @@ export default function AppointCard({ appointments, handleDelete }) {
   return (
     <View style={globalStyles.list}>
       {appointments.length === 0 ? (
-        <Text>No Appointment Data Found</Text>
+        <Text style={globalStyles.noData}>
+          No Appointment Data Found. Press the '+' button to add a new
+          appointment.
+        </Text>
       ) : (
         <FlatList
           keyExtractor={(item, index) => index.toString()}
