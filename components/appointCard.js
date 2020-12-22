@@ -2,9 +2,8 @@ import React from "react";
 import { Text, View, FlatList, TouchableOpacity, Alert } from "react-native";
 import { globalStyles } from "../styles/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import axios from "axios";
 
-export default function AppointCard({ appointments }) {
+export default function AppointCard({ appointments, handleDelete }) {
   const workInProgress = () => {
     Alert.alert(
       "This feature is a work in progress",
@@ -14,16 +13,9 @@ export default function AppointCard({ appointments }) {
     );
   };
 
-  const handleDelete = (id) => {
-    axios
-      .delete(`https://medchime-server.herokuapp.com/api/appointments/${id}`)
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-  };
-
   return (
     <View style={globalStyles.list}>
-      {appointments === undefined ? (
+      {appointments.length === 0 ? (
         <Text>No Appointment Data Found</Text>
       ) : (
         <FlatList

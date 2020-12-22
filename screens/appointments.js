@@ -14,7 +14,7 @@ import axios from "axios";
 import Constants from "expo-constants";
 
 export default function Appointments() {
-  const [appointments, setAppointments] = useState();
+  const [appointments, setAppointments] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
 
@@ -33,12 +33,21 @@ export default function Appointments() {
     setIsUpdated(true);
   };
 
+  const handleDelete = (id) => {
+    axios
+      .delete(`https://medchime-server.herokuapp.com/api/appointments/${id}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+    setIsUpdated(true);
+  };
+
   useEffect(() => {
     axios
       .get("https://medchime-server.herokuapp.com/api/appointments")
       .then((response) => {
         if (response.data.length === 0) {
           console.log("No Data found");
+          setAppointments([]);
         } else {
           console.log("Data Found");
           setAppointments(
@@ -46,7 +55,7 @@ export default function Appointments() {
           );
         }
       })
-      .then(() => console.log(appointments))
+      .then(() => console.log(appointments.length))
       .catch((err) => console.log(err));
     setIsUpdated(false);
   }, [isUpdated]);
@@ -69,7 +78,7 @@ export default function Appointments() {
         </TouchableWithoutFeedback>
       </Modal>
 
-      <AppointCard appointments={appointments} />
+      <AppointCard appointments={appointments} handleDelete={handleDelete} />
 
       <MaterialCommunityIcons
         name="plus-circle"
