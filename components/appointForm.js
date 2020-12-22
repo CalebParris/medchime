@@ -88,6 +88,7 @@ export default function AppointForm({ addAppointment }) {
                     mode="date"
                     onConfirm={handleDate}
                     onCancel={() => setDateVisibility(false)}
+                    minimumDate={new Date()}
                   />
                 </View>
               </TouchableOpacity>
