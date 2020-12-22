@@ -7,7 +7,7 @@ export const globalStyles = StyleSheet.create({
   },
   titleText: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 23,
     color: "black",
     textAlign: "center",
   },
@@ -126,5 +126,13 @@ export const globalStyles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     color: "grey",
+  },
+  bodyText: {
+    fontWeight: "bold",
+    fontSize: 18,
+    color: "black",
+    textAlign: "center",
+    marginTop: 15,
+    marginHorizontal: 15,
   },
 });
