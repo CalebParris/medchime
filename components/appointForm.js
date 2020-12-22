@@ -36,11 +36,13 @@ export default function AppointForm({ addAppointment }) {
           const [isTimeVisible, setTimeVisibility] = useState(false);
 
           const handleDate = (date) => {
+            setDateVisibility(false);
             let newDate = Moment(date).format("MM/DD/YYYY");
             return (props.values.date = newDate);
           };
 
           const handleTime = (time) => {
+            setTimeVisibility(false);
             let newTime = Moment(time).format("hh:mm A");
             return (props.values.time = newTime);
           };
