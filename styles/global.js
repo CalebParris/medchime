@@ -118,7 +118,7 @@ export const globalStyles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start",
   },
-  editIcon: {
-    color: "lightgrey",
+  emptyBox: {
+    backgroundColor: "blue",
   },
 });

@@ -34,7 +34,7 @@ export default function MedList() {
   const handleDelete = (id) => {
     axios
       .delete(`https://medchime-server.herokuapp.com/api/medications/${id}`)
-      .then((response) => console.log(response))
+      .then((response) => console.log("Successfully Deleted Medication"))
       .catch((err) => console.log(err));
     setIsUpdated(true);
   };
@@ -45,7 +45,7 @@ export default function MedList() {
       .then((response) => {
         if (response.data.length === 0) {
           console.log("No Data found");
-          setAppointments([]);
+          setMeds([]);
         } else {
           console.log("Data Found");
           setMeds(
