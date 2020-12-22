@@ -49,7 +49,11 @@ export default function MedList() {
         } else {
           console.log("Data Found");
           setMeds(
-            response.data.filter((item) => item.deviceId === Constants.deviceId)
+            response.data
+              .filter((item) => item.deviceId === Constants.deviceId)
+              .sort((a, b) =>
+                a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+              )
           );
         }
       })
