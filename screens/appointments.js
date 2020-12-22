@@ -36,7 +36,7 @@ export default function Appointments() {
   const handleDelete = (id) => {
     axios
       .delete(`https://medchime-server.herokuapp.com/api/appointments/${id}`)
-      .then((response) => console.log(response))
+      .then((response) => console.log("Successfully Deleted Medication"))
       .catch((err) => console.log(err));
     setIsUpdated(true);
   };
@@ -51,7 +51,10 @@ export default function Appointments() {
         } else {
           console.log("Data Found");
           setAppointments(
-            response.data.filter((item) => item.deviceId === Constants.deviceId)
+            response.data
+              .filter((item) => item.deviceId === Constants.deviceId)
+              .sort((a, b) => a.time.localeCompare(b.time))
+              .sort((a, b) => new Date(a.date) - new Date(b.date))
           );
         }
       })
