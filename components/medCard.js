@@ -3,7 +3,7 @@ import { Text, View, FlatList, TouchableOpacity, Alert } from "react-native";
 import { globalStyles } from "../styles/global";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default function MedCard({ meds }) {
+export default function MedCard({ meds, handleDelete }) {
   const workInProgress = () => {
     Alert.alert(
       "This feature is a work in progress",
@@ -15,7 +15,7 @@ export default function MedCard({ meds }) {
 
   return (
     <View style={globalStyles.list}>
-      {meds === undefined ? (
+      {meds.length === 0 ? (
         <Text>No Medication Data Found</Text>
       ) : (
         <FlatList
@@ -37,7 +37,7 @@ export default function MedCard({ meds }) {
                   <MaterialCommunityIcons
                     name="close"
                     size={24}
-                    onPress={() => console.log("deleted")}
+                    onPress={() => handleDelete(item._id)}
                     style={globalStyles.modalClose}
                   />
                 </TouchableOpacity>
