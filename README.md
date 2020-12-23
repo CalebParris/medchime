@@ -4,7 +4,7 @@
 
 ## Description
 
-This app will allow users to input any medications they are currently taking, as well as their instrutions, to keep track of them. Users will also be able to save upcoming doctor's appointments by time and date.
+This app will allow users to input any medications they are currently taking, as well as their instrutions, to keep track of them. Users will also be able to save upcoming doctor's appointments by time and date. This app was built with React Native and designed primarily for Android devices.
 
 ## Table of Contents
 
