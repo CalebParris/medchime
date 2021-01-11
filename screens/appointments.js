@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Text,
   View,
@@ -17,6 +17,30 @@ export default function Appointments() {
   const [appointments, setAppointments] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    axios
+      .get("https://medchime-server.herokuapp.com/api/appointments")
+      .then((response) => {
+        if (response.data.length === 0) {
+          console.log("No Data found");
+          setAppointments([]);
+        } else {
+          console.log("Data Found");
+          setAppointments(
+            response.data
+              .filter((item) => item.deviceId === Constants.deviceId)
+              .sort((a, b) => a.time.localeCompare(b.time))
+              .sort((a, b) => new Date(a.date) - new Date(b.date))
+          );
+        }
+      })
+      .then(() => console.log(appointments.length))
+      .catch((err) => console.log(err));
+    setRefreshing(false);
+  }, [refreshing]);
 
   const addAppointment = (appointment) => {
     axios
@@ -81,7 +105,12 @@ export default function Appointments() {
         </TouchableWithoutFeedback>
       </Modal>
 
-      <AppointCard appointments={appointments} handleDelete={handleDelete} />
+      <AppointCard
+        appointments={appointments}
+        handleDelete={handleDelete}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
 
       <MaterialCommunityIcons
         name="plus-circle"
