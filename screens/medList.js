@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Text,
   View,
@@ -17,6 +17,31 @@ export default function MedList() {
   const [meds, setMeds] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [isUpdated, setIsUpdated] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    axios
+      .get("https://medchime-server.herokuapp.com/api/medications")
+      .then((response) => {
+        if (response.data.length === 0) {
+          console.log("No Data found");
+          setMeds([]);
+        } else {
+          console.log("Data Found");
+          setMeds(
+            response.data
+              .filter((item) => item.deviceId === Constants.deviceId)
+              .sort((a, b) =>
+                a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+              )
+          );
+        }
+      })
+      .then(() => console.log(meds.length))
+      .catch((err) => console.log(err));
+    setRefreshing(false);
+  }, [refreshing]);
 
   const addMed = (med) => {
     axios
@@ -80,7 +105,12 @@ export default function MedList() {
         </TouchableWithoutFeedback>
       </Modal>
 
-      <MedCard meds={meds} handleDelete={handleDelete} />
+      <MedCard
+        meds={meds}
+        handleDelete={handleDelete}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
 
       <MaterialCommunityIcons
         name="plus-circle"
