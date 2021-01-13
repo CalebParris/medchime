@@ -140,7 +140,7 @@ export default function AppointForm({ addAppointment }) {
                 {props.touched.location && props.errors.location}
               </Text>
 
-              <Btn text="Sumbit" onPress={props.handleSubmit} />
+              <Btn text="Submit" onPress={props.handleSubmit} />
             </View>
           );
         }}

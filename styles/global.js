@@ -4,11 +4,12 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor: "#9577BB",
   },
   titleText: {
     fontWeight: "bold",
     fontSize: 23,
-    color: "black",
+    color: "white",
     textAlign: "center",
   },
   formHeader: {
@@ -16,11 +17,13 @@ export const globalStyles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
+    color: "#D3D3D3",
   },
   header: {
     padding: 20,
     borderBottomWidth: 1,
     borderBottomColor: "blue",
+    backgroundColor: "#D3D3D3",
   },
   headerText: {
     color: "blue",
@@ -41,18 +44,20 @@ export const globalStyles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "#D3D3D3",
     padding: 10,
     fontSize: 18,
     borderRadius: 6,
+    color: "#D3D3D3",
   },
   instructions: {
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "#D3D3D3",
     padding: 10,
     fontSize: 18,
     borderRadius: 6,
     minHeight: 150,
+    color: "#D3D3D3",
   },
   modalContent: {
     flex: 1,
@@ -102,10 +107,11 @@ export const globalStyles = StyleSheet.create({
   },
   cardText: {
     marginVertical: 20,
+    backgroundColor: "#D3D3D3",
   },
   dateTimeInput: {
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "#D3D3D3",
     padding: 10,
     borderRadius: 6,
     marginBottom: 20,
@@ -125,14 +131,17 @@ export const globalStyles = StyleSheet.create({
     marginVertical: 100,
     textAlign: "center",
     fontSize: 20,
-    color: "grey",
+    color: "lightgrey",
   },
   bodyText: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "black",
+    color: "#D3D3D3",
     textAlign: "center",
     marginTop: 15,
     marginHorizontal: 15,
+  },
+  editIcon: {
+    color: "#D3D3D3",
   },
 });

@@ -54,7 +54,7 @@ export default function MedForm({ addMed }) {
                 {props.touched.instructions && props.errors.instructions}
               </Text>
 
-              <Btn text="Sumbit" onPress={props.handleSubmit} />
+              <Btn text="Submit" onPress={props.handleSubmit} />
             </View>
           );
         }}
